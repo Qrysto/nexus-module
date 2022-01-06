@@ -1,4 +1,5 @@
 import webpackAliases from './webpackAliases';
+import packageJson from '../package.json';
 
 const {
   walletVersion,
@@ -44,6 +45,8 @@ const {
   },
 } = NEXUS;
 
+const browserslistQuery = packageJson.browserslist;
+
 export {
   walletVersion,
   // Components
@@ -86,4 +89,5 @@ export {
   onUserStatusUpdated,
   // Helpers
   webpackAliases,
+  browserslistQuery,
 };
