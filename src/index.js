@@ -1,3 +1,5 @@
+import webpackAliases from './webpackAliases';
+
 const {
   walletVersion,
   components: {
@@ -82,4 +84,6 @@ export {
   onSettingsUpdated,
   onCoreInfoUpdated,
   onUserStatusUpdated,
+  // Helpers
+  webpackAliases,
 };
