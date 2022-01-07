@@ -1,4 +1,5 @@
 import webpackAliases from './webpackAliases';
+import { stateMiddleware, storageMiddleware } from './redux';
 import packageJson from '../package.json';
 
 const {
@@ -90,4 +91,6 @@ export {
   // Helpers
   webpackAliases,
   browserslistQuery,
+  stateMiddleware,
+  storageMiddleware,
 };
