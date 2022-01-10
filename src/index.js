@@ -1,5 +1,18 @@
 import webpackAliases from './webpackAliases';
-import { stateMiddleware, storageMiddleware } from './redux';
+import {
+  reducer,
+  stateMiddleware,
+  storageMiddleware,
+  INITIALIZE,
+  UPDATE_CORE_INFO,
+  UPDATE_THEME,
+  initialize,
+  updateCoreInfo,
+  updateTheme,
+  selectInitialized,
+  selectCoreInfo,
+  selectTheme,
+} from './duck';
 import packageJson from '../package.json';
 
 const {
@@ -91,6 +104,16 @@ export {
   // Helpers
   webpackAliases,
   browserslistQuery,
+  reducer,
   stateMiddleware,
   storageMiddleware,
+  INITIALIZE,
+  UPDATE_CORE_INFO,
+  UPDATE_THEME,
+  initialize,
+  updateCoreInfo,
+  updateTheme,
+  selectInitialized,
+  selectCoreInfo,
+  selectTheme,
 };
