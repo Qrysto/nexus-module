@@ -90,3 +90,16 @@ export const updateTheme = (theme) => ({
   type: TYPE.UPDATE_THEME,
   payload: theme,
 });
+
+const defaultGetWalletState = (state) => state.nexus;
+
+export const selectInitialized = (
+  state,
+  getWalletState = defaultGetWalletState
+) => getWalletState(state).initialized;
+
+export const selectCoreInfo = (state, getWalletState = defaultGetWalletState) =>
+  getWalletState(state).coreInfo;
+
+export const selectTheme = (state, getWalletState = defaultGetWalletState) =>
+  getWalletState(state).theme;
