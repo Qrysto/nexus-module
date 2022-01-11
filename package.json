@@ -1,6 +1,6 @@
 {
   "name": "nexus-module",
-  "version": "3.1.0",
+  "version": "1.0.0",
   "description": "Re-exports utilities and components from NEXUS global variable, also provides useful helpers for Nexus Wallet Modules",
   "main": "lib/index.js",
   "scripts": {
