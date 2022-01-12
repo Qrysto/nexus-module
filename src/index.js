@@ -104,9 +104,9 @@ export {
   // Helpers
   webpackAliases,
   browserslistQuery,
-  reducer,
   stateMiddleware,
   storageMiddleware,
+  reducer,
   INITIALIZE,
   UPDATE_CORE_INFO,
   UPDATE_THEME,
