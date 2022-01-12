@@ -1,3 +1,7 @@
+# nexus-module
+
+nexus-module v1.0.0 is built for Nexus Wallet Module v
+
 This package will likely be useful for you if you are developing a [Nexus Wallet Module](https://github.com/Nexusoft/NexusInterface/tree/master/docs/Modules).
 
 ## Usage
@@ -61,5 +65,45 @@ const babelConfig = {
 ```
 
 ### Redux middlewares for persisting module state and storage
+
+Nexus Wallet provides you with `updateState` and `updateStorage` functions so that you can persist some module data as long as the wallet is still running (with `updateState`), or indefinitely (with `updateStorage`).
+
+If the data you want to persist is stored inside a Redux store, `nexus-module` makes the process easier for you with `stateMiddleware` and `storageMiddleware`.
+
+```
+import { stateMiddleware, storageMiddleware } from 'nexus-module';
+
+function configureStore() {
+  const middlewares = [
+    // Automatically save state.settings to disk whenever there's a change
+    storageMiddleware((state) => state.settings),
+    // Automatically save state.ui to wallet state whenever there's a change
+    stateMiddleware((state) => state.ui),
+    // ...other middlewares
+  ];
+  // Use middlewares to create redux store...
+}
+```
+
+Remember to repopulate the persisted data to the corresponding state when your module is initialized, for example:
+
+```
+// state.settings reducer
+import { INITIALIZE } from 'nexus-module';
+
+const initialState = {}
+
+export default (state = initialState, action) => {
+  switch (action.type) {
+    case INITIALIZE:
+      return action.payload?.storageData || state;
+
+    // ...handle other action types
+
+    default:
+      return state;
+  }
+};
+```
 
 ### Redux reducer and actions for storing wallet data
