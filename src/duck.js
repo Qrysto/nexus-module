@@ -10,30 +10,6 @@ const {
 export const INITIALIZE = '@@NWM/INITIALIZE';
 export const UPDATE_WALLET_DATA = '@@NWM/UPDATE_WALLET_DATA';
 
-export function stateMiddleware(getPersistedState) {
-  return (store) => (next) => (action) => {
-    const oldData = getPersistedState(store.getState());
-    const result = next(action);
-    const data = getPersistedState(store.getState());
-    if (data !== oldData) {
-      updateState(data);
-    }
-    return result;
-  };
-}
-
-export function storageMiddleware(getStoredData) {
-  return (store) => (next) => (action) => {
-    const oldData = getStoredData(store.getState());
-    const result = next(action);
-    const data = getStoredData(store.getState());
-    if (data !== oldData) {
-      updateStorage(data);
-    }
-    return result;
-  };
-}
-
 const initialState = {
   initialized: false,
   theme: null,
@@ -43,7 +19,7 @@ const initialState = {
   addressBook: null,
 };
 
-export function reducer(state = initialState, action) {
+export function walletDataReducer(state = initialState, action) {
   switch (action.type) {
     case INITIALIZE:
       return {
@@ -80,4 +56,28 @@ export function listenToWalletData(store) {
       payload: updates,
     });
   });
+}
+
+export function stateMiddleware(getPersistedState) {
+  return (store) => (next) => (action) => {
+    const oldData = getPersistedState(store.getState());
+    const result = next(action);
+    const data = getPersistedState(store.getState());
+    if (data !== oldData) {
+      updateState(data);
+    }
+    return result;
+  };
+}
+
+export function storageMiddleware(getStoredData) {
+  return (store) => (next) => (action) => {
+    const oldData = getStoredData(store.getState());
+    const result = next(action);
+    const data = getStoredData(store.getState());
+    if (data !== oldData) {
+      updateStorage(data);
+    }
+    return result;
+  };
 }

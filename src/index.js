@@ -1,6 +1,6 @@
 import webpackAliases from './webpackAliases';
 import {
-  reducer,
+  walletDataReducer,
   listenToWalletData,
   INITIALIZE,
   UPDATE_WALLET_DATA,
@@ -92,7 +92,7 @@ export {
   // Helpers
   webpackAliases,
   browserslistQuery,
-  reducer,
+  walletDataReducer,
   listenToWalletData,
   INITIALIZE,
   UPDATE_WALLET_DATA,
