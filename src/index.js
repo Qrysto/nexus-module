@@ -1,17 +1,11 @@
 import webpackAliases from './webpackAliases';
 import {
   reducer,
+  listenToWalletData,
+  INITIALIZE,
+  UPDATE_WALLET_DATA,
   stateMiddleware,
   storageMiddleware,
-  INITIALIZE,
-  UPDATE_CORE_INFO,
-  UPDATE_THEME,
-  initialize,
-  updateCoreInfo,
-  updateTheme,
-  selectInitialized,
-  selectCoreInfo,
-  selectTheme,
 } from './duck';
 import packageJson from '../package.json';
 
@@ -52,10 +46,7 @@ const {
     updateState,
     updateStorage,
     onceInitialize,
-    onThemeUpdated,
-    onSettingsUpdated,
-    onCoreInfoUpdated,
-    onUserStatusUpdated,
+    onWalletDataUpdated,
   },
 } = NEXUS;
 
@@ -97,23 +88,14 @@ export {
   updateState,
   updateStorage,
   onceInitialize,
-  onThemeUpdated,
-  onSettingsUpdated,
-  onCoreInfoUpdated,
-  onUserStatusUpdated,
+  onWalletDataUpdated,
   // Helpers
   webpackAliases,
   browserslistQuery,
+  reducer,
+  listenToWalletData,
+  INITIALIZE,
+  UPDATE_WALLET_DATA,
   stateMiddleware,
   storageMiddleware,
-  reducer,
-  INITIALIZE,
-  UPDATE_CORE_INFO,
-  UPDATE_THEME,
-  initialize,
-  updateCoreInfo,
-  updateTheme,
-  selectInitialized,
-  selectCoreInfo,
-  selectTheme,
 };

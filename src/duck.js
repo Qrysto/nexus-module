@@ -1,10 +1,14 @@
 const {
-  utilities: { updateState, updateStorage },
+  utilities: {
+    updateState,
+    updateStorage,
+    onceInitialize,
+    onWalletDataUpdated,
+  },
 } = NEXUS;
 
 export const INITIALIZE = '@@NWM/INITIALIZE';
-export const UPDATE_CORE_INFO = '@@NWM/UPDATE_CORE_INFO';
-export const UPDATE_THEME = '@@NWM/UPDATE_THEME';
+export const UPDATE_WALLET_DATA = '@@NWM/UPDATE_WALLET_DATA';
 
 export function stateMiddleware(getPersistedState) {
   return (store) => (next) => (action) => {
@@ -30,25 +34,13 @@ export function storageMiddleware(getStoredData) {
   };
 }
 
-export const initialize = (data) => ({
-  type: INITIALIZE,
-  payload: data,
-});
-
-export const updateCoreInfo = (coreInfo) => ({
-  type: UPDATE_CORE_INFO,
-  payload: coreInfo,
-});
-
-export const updateTheme = (theme) => ({
-  type: UPDATE_THEME,
-  payload: theme,
-});
-
 const initialState = {
   initialized: false,
-  coreInfo: null,
   theme: null,
+  settings: null,
+  coreInfo: null,
+  userStatus: null,
+  addressBook: null,
 };
 
 export function reducer(state = initialState, action) {
@@ -57,49 +49,35 @@ export function reducer(state = initialState, action) {
       return {
         ...state,
         initialized: true,
-        coreInfo: action.payload.coreInfo,
         theme: action.payload.theme,
-      };
-    case UPDATE_CORE_INFO:
-      return {
-        ...state,
+        settings: action.payload.settings,
         coreInfo: action.payload.coreInfo,
+        userStatus: action.payload.userStatus,
+        addressBook: action.payload.addressBook,
       };
-    case UPDATE_THEME:
+    case UPDATE_WALLET_DATA:
       return {
         ...state,
+        ...action.payload,
         initialized: true,
-        theme: action.payload.theme,
       };
     default:
       return state;
   }
 }
 
-export const initialize = (data) => ({
-  type: TYPE.INITIALIZE,
-  payload: data,
-});
+export function listenToWalletData(store) {
+  onceInitialize((data) => {
+    store.dispatch({
+      type: INITIALIZE,
+      payload: data,
+    });
+  });
 
-export const updateCoreInfo = (coreInfo) => ({
-  type: TYPE.UPDATE_CORE_INFO,
-  payload: coreInfo,
-});
-
-export const updateTheme = (theme) => ({
-  type: TYPE.UPDATE_THEME,
-  payload: theme,
-});
-
-const defaultGetWalletState = (state) => state.nexus;
-
-export const selectInitialized = (
-  state,
-  getWalletState = defaultGetWalletState
-) => getWalletState(state).initialized;
-
-export const selectCoreInfo = (state, getWalletState = defaultGetWalletState) =>
-  getWalletState(state).coreInfo;
-
-export const selectTheme = (state, getWalletState = defaultGetWalletState) =>
-  getWalletState(state).theme;
+  onWalletDataUpdated((updates) => {
+    store.dispatch({
+      type: UPDATE_WALLET_DATA,
+      payload: updates,
+    });
+  });
+}
