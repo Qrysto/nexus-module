@@ -64,7 +64,44 @@ const babelConfig = {
 }
 ```
 
-### Redux middlewares for persisting module state and storage
+### Store wallet data into Redux
+
+First you need to add `walletDataReducer` into your redux reducer, for example:
+
+```
+import { walletDataReducer } from 'nexus-module;
+
+export default combineReducers({
+  nexus: walletDataReducer
+  // ...other reducers
+});
+```
+
+Next, call `listenToWalletData` to keep wallet data state in Redux updated:
+
+```
+import { listenToWalletData } from 'nexus-module;
+
+listenToWalletData(store)
+```
+
+Then you can retrieve wallet data from Redux state whenever you want
+
+```
+const walletData = useSelector(state => state.nexus)
+
+// walletData shape will look like this
+{
+  initialized,  // boolean
+  theme,        // object
+  settings,     // object
+  coreInfo,     // object
+  userStatus,   // object
+  addressBook,  // object
+};
+```
+
+### Automate updating module state and storage with Redux middlewares
 
 Nexus Wallet provides you with `updateState` and `updateStorage` functions so that you can persist some module data as long as the wallet is still running (with `updateState`), or indefinitely (with `updateStorage`).
 
@@ -105,5 +142,3 @@ export default (state = initialState, action) => {
   }
 };
 ```
-
-### Redux reducer and actions for storing wallet data
