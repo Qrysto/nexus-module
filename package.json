@@ -1,7 +1,7 @@
 {
   "name": "nexus-module",
   "version": "1.0.0",
-  "description": "Providing useful helpers for Nexus Wallet Modules. Utilities and components from NEXUS global variable are also re-exported here for convenience",
+  "description": "Useful helpers for Nexus Wallet Module developers",
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
