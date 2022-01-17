@@ -1,6 +1,6 @@
 # nexus-module
 
-nexus-module v1.0.0 is built for Nexus Wallet Module v
+nexus-module v1.0.0 is built for Nexus Wallet Module v3.1.0
 
 This package will likely be useful for you if you are developing a [Nexus Wallet Module](https://github.com/Nexusoft/NexusInterface/tree/master/docs/Modules).
 
