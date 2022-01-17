@@ -6,7 +6,7 @@ import {
   UPDATE_WALLET_DATA,
   stateMiddleware,
   storageMiddleware,
-} from './duck';
+} from './reduxHelpers';
 import packageJson from '../package.json';
 
 const {
