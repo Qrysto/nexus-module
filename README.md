@@ -50,6 +50,18 @@ const webpackConfig = {
 }
 ```
 
+Then you can import libraries as if they were direct dependencies of your project:
+
+```
+// Instead of this
+import React from 'nexus-module/lib/react';
+import styled from 'nexus-module/lib/emotionStyled';
+
+// You can do this
+import React from 'react';
+import styled from '@emotion/styled';
+```
+
 ### Configure browserslist targets
 
 `nexus-module` exports the **browserslist** query which will be useful in some cases like configuring target browsers for `@babel/preset-env`.
@@ -142,3 +154,51 @@ export default (state = initialState, action) => {
   }
 };
 ```
+
+## API reference
+
+- **walletVersion**: from NEXUS.walletVersion
+
+- **GlobalStyles**: from NEXUS.components.GlobalStyles
+- **ThemeController**: from NEXUS.components.ThemeController
+- **Icon**: from NEXUS.components.Icon
+- **Panel**: from NEXUS.components.Panel
+- **AutoSuggest**: from NEXUS.components.AutoSuggest
+- **FieldSet**: from NEXUS.components.FieldSet
+- **Switch**: from NEXUS.components.Switch
+- **Modal**: from NEXUS.components.Modal
+- **Tooltip**: from NEXUS.components.Tooltip
+- **Select**: from NEXUS.components.Select
+- **TextField**: from NEXUS.components.TextField
+- **FormField**: from NEXUS.components.FormField
+- **Link**: from NEXUS.components.Link
+- **Arrow**: from NEXUS.components.Arrow
+- **Tab**: from NEXUS.components.Tab
+- **Button**: from NEXUS.components.Button
+- **Dropdown**: from NEXUS.components.Dropdown
+
+- **color**: from NEXUS.utilities.color
+- **copyToClipboard**: from NEXUS.utilities.copyToClipboard
+- **send**: from NEXUS.utilities.send
+- **showNotification**: from NEXUS.utilities.showNotification
+- **showErrorDialog**: from NEXUS.utilities.showErrorDialog
+- **showSuccessDialog**: from NEXUS.utilities.showSuccessDialog
+- **showInfoDialog**: from NEXUS.utilities.showInfoDialog
+- **rpcCall**: from NEXUS.utilities.rpcCall
+- **apiCall**: from NEXUS.utilities.apiCall
+- **secureApiCall**: from NEXUS.utilities.secureApiCall
+- **proxyRequest**: from NEXUS.utilities.proxyRequest
+- **confirm**: from NEXUS.utilities.confirm
+- **updateState**: from NEXUS.utilities.updateState
+- **updateStorage**: from NEXUS.utilities.updateStorage
+- **onceInitialize**: from NEXUS.utilities.onceInitialize
+- **onWalletDataUpdated**: from NEXUS.utilities.onWalletDataUpdated
+
+- **browserslistQuery**: _String_ - Browserslist query that specifies the supported Nexus Wallet's Electron version.
+- **webpackAliases**: _Object_ - Alias config for webpack. Add this object to `resolve.alias` webpack config, so that third party libraries from `NEXUS.libraries` can be imported as if they were direct dependencies of the project.
+- **walletDataReducer**: _(state: Object, action: Object) => state: Object_ - Redux reducer for wallet data.
+- **listenToWalletData**: _(store: Object) => void_ - Listen to any changes from wallet data and dispatch Redux actions accordingly.
+- **INITIALIZE**: _String_ - Redux action type, dispatched when the module is initialized.
+- **UPDATE_WALLET_DATA**: _String_ - Redux action type, dispatched when the wallet data is updated.
+- **stateMiddleware**: _(getPersistedState: (state: Object) => persistedState: Object) => middleware: Function_ - Get a Redux middleware that automatically update the specified module state to the wallet so that it's not lost when user navigates away from the module.
+- **storageMiddleware**: _(getStoredData: (state: Object) => storedData: Object) => middleware: Function_ - Get a Redux middleware that automatically store the data to the disk so that it's not lost when user closes the wallet.
