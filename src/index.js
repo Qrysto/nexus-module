@@ -50,7 +50,7 @@ const {
     onceInitialize,
     onWalletDataUpdated,
   } = {},
-} = NEXUS || {};
+} = global.NEXUS || {};
 
 const browserslistQuery = packageJson.browserslist;
 
