@@ -9,6 +9,8 @@ import {
 } from './reduxHelpers';
 import packageJson from '../package.json';
 
+// This package could be imported by other environments other than on Nexus Wallet, such as babel.config.js
+// where NEXUS global variable is not defined. So we have to prepare for that with default values
 const {
   walletVersion,
   components: {
@@ -29,7 +31,7 @@ const {
     Tab,
     Button,
     Dropdown,
-  },
+  } = {},
   utilities: {
     color,
     copyToClipboard,
@@ -47,8 +49,8 @@ const {
     updateStorage,
     onceInitialize,
     onWalletDataUpdated,
-  },
-} = NEXUS;
+  } = {},
+} = NEXUS || {};
 
 const browserslistQuery = packageJson.browserslist;
 
