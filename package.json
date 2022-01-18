@@ -5,7 +5,8 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "env NODE_ENV=production babel src --out-dir lib"
+    "build": "env NODE_ENV=production babel src --out-dir lib",
+    "publish": "npm run build && npm publish"
   },
   "author": "Krysto",
   "license": "ISC",
