@@ -1,6 +1,6 @@
 {
   "name": "nexus-module",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "description": "Useful helpers for Nexus Wallet Module developers",
   "main": "lib/index.js",
   "scripts": {
