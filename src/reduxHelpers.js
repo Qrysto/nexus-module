@@ -4,8 +4,8 @@ const {
     updateStorage,
     onceInitialize,
     onWalletDataUpdated,
-  },
-} = NEXUS;
+  } = {},
+} = global.NEXUS || {};
 
 export const INITIALIZE = '@@NWM/INITIALIZE';
 export const UPDATE_WALLET_DATA = '@@NWM/UPDATE_WALLET_DATA';
