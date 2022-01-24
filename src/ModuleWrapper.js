@@ -1,7 +1,9 @@
-const CacheProvider = NEXUS?.libraries.emotion.react;
+const CacheProvider = NEXUS?.libraries.emotion.react.CacheProvider;
+const createCache = NEXUS?.libraries.emotion.cache.default;
 const ThemeController = NEXUS?.components.ThemeController;
 const GlobalStyles = NEXUS?.components.GlobalStyles;
-const { useEffect, useState } = NEXUS?.libraries.React;
+const useEffect = NEXUS?.libraries.React.useEffect;
+const useState = NEXUS?.libraries.React.useState;
 
 export default function ModuleWrapper({ initialized, theme, children }) {
   const [cache, setCache] = useState(null);
