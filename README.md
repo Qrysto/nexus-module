@@ -155,6 +155,46 @@ export default (state = initialState, action) => {
 };
 ```
 
+### Reduce boilerplate with ModuleWrapper
+
+`ModuleWrapper` is a component that replaces a few top-level components you most likely need to use in your module.
+
+Instead of this
+
+```
+const emotionCache = createCache({ container: document.head, key: 'emotion' });
+
+function YourModule() {
+  const initialized = useSelector((state) => state.nexus.initialized);
+  const theme = useSelector((state) => state.nexus.theme);
+  if (!initialized) return null;
+
+  return (
+    <CacheProvider value={emotionCache}>
+      <ThemeController theme={theme}>
+        <GlobalStyles />
+        {/* Your module content... */}
+      </ThemeController>
+    </CacheProvider>
+  )
+}
+```
+
+Now you only need this
+
+```
+function YourModule() {
+  const initialized = useSelector((state) => state.nexus.initialized);
+  const theme = useSelector((state) => state.nexus.theme);
+
+  return (
+    <ModuleWrapper initialized={initialized} theme={theme}>
+      {/* Your module content... */}
+    </ModuleWrapper>
+  );
+}
+```
+
 ## API reference
 
 - **walletVersion**: from NEXUS.walletVersion
@@ -202,3 +242,4 @@ export default (state = initialState, action) => {
 - **UPDATE_WALLET_DATA**: _String_ - Redux action type, dispatched when the wallet data is updated.
 - **stateMiddleware**: _(getPersistedState: (state: Object) => persistedState: Object) => middleware: Function_ - Get a Redux middleware that automatically update the specified module state to the wallet so that it's not lost when user navigates away from the module.
 - **storageMiddleware**: _(getStoredData: (state: Object) => storedData: Object) => middleware: Function_ - Get a Redux middleware that automatically store the data to the disk so that it's not lost when user closes the wallet.
+- **ModuleWrapper**: _React Component_ - Replaces `CacheProvider`, `ThemeController`, and `GlobalStyles` components at once.
