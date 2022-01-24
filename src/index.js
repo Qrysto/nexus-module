@@ -7,6 +7,7 @@ import {
   stateMiddleware,
   storageMiddleware,
 } from './reduxHelpers';
+import ModuleWrapper from './ModuleWrapper';
 import packageJson from '../package.json';
 
 // This package could be imported by other environments other than on Nexus Wallet, such as babel.config.js
@@ -100,4 +101,5 @@ export {
   UPDATE_WALLET_DATA,
   stateMiddleware,
   storageMiddleware,
+  ModuleWrapper,
 };
