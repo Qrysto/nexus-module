@@ -50,6 +50,7 @@ const {
     updateStorage,
     onceInitialize,
     onWalletDataUpdated,
+    openInBrowser,
   } = {},
 } = global.NEXUS || {};
 
@@ -92,6 +93,7 @@ export {
   updateStorage,
   onceInitialize,
   onWalletDataUpdated,
+  openInBrowser,
   // Helpers
   webpackAliases,
   browserslistQuery,
