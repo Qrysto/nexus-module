@@ -1,3 +1,5 @@
+// Emotion v11.14.0
+
 const {
   libraries: { emotion },
 } = NEXUS;
@@ -8,6 +10,7 @@ const {
   Global,
   ThemeContext,
   ThemeProvider,
+  __unsafe_useEmotionCache,
   createElement,
   css,
   jsx,
@@ -23,6 +26,7 @@ export {
   Global,
   ThemeContext,
   ThemeProvider,
+  __unsafe_useEmotionCache,
   createElement,
   css,
   jsx,

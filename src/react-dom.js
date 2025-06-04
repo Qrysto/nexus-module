@@ -1,30 +1,38 @@
+// React DOM v19.1.0
+
 const {
   libraries: { ReactDOM },
 } = NEXUS;
 
 const {
   createPortal,
-  findDOMNode,
   flushSync,
-  hydrate,
-  render,
-  unmountComponentAtNode,
+  preconnect,
+  prefetchDNS,
+  preinit,
+  preinitModule,
+  preload,
+  preloadModule,
+  requestFormReset,
   unstable_batchedUpdates,
-  unstable_createPortal,
-  unstable_renderSubtreeIntoContainer,
+  useFormState,
+  useFormStatus,
   version,
 } = ReactDOM;
 
 export {
   createPortal,
-  findDOMNode,
   flushSync,
-  hydrate,
-  render,
-  unmountComponentAtNode,
+  preconnect,
+  prefetchDNS,
+  preinit,
+  preinitModule,
+  preload,
+  preloadModule,
+  requestFormReset,
   unstable_batchedUpdates,
-  unstable_createPortal,
-  unstable_renderSubtreeIntoContainer,
+  useFormState,
+  useFormStatus,
   version,
 };
 

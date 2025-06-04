@@ -1,3 +1,5 @@
+// React v19.1.0
+
 const {
   libraries: {
     React: { jsxDevRuntime },
