@@ -19,5 +19,6 @@
   },
   "dependencies": {
     "@babel/preset-react": "^7.18.6"
-  }
+  },
+  "type": "module"
 }
