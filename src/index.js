@@ -1,4 +1,4 @@
-import webpackAliases from './webpackAliases';
+import webpackAliases from "./webpackAliases";
 import {
   walletDataReducer,
   listenToWalletData,
@@ -6,9 +6,9 @@ import {
   UPDATE_WALLET_DATA,
   stateMiddleware,
   storageMiddleware,
-} from './reduxHelpers';
-import ModuleWrapper from './ModuleWrapper';
-import packageJson from '../package.json';
+} from "./reduxHelpers";
+import ModuleWrapper from "./ModuleWrapper";
+import browserslistQuery from "./browserslistQuery";
 
 // This package could be imported by other environments other than on Nexus Wallet, such as babel.config.js
 // where NEXUS global variable is not defined. So we have to prepare for that with default values
@@ -53,8 +53,6 @@ const {
     openInBrowser,
   } = {},
 } = global.NEXUS || {};
-
-const browserslistQuery = packageJson.browserslist;
 
 export {
   walletVersion,
